@@ -10,6 +10,8 @@
 - unregisterUnicast(options)
 - registerMulticast(options)
 - unregisterMulticast(options)
+- getUniqueId(options)
+- isBind(options)
 
 
 #### registerUnicast ####
@@ -227,6 +229,111 @@ options：为object类型，其中包括以下参数：
 			<td>tag</td>
 			<td>string</td>
 			<td>TAG信息</td>
+		</tr>
+    </tbody>
+</table>
+
+
+
+#### getUniqueId ####
+    getUniqueId(options)
+
+**功能描述：**
+
+获取设备的唯一标示。
+
+**参数说明：**
+options：为object类型，其中包括以下参数：
+
+<table style="border-style: solid; border-width: 0pt;" border="1" cellspacing="0" cellpadding="5px">
+    <tbody>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+			<td>onsuccess</td>
+			<td>function(data){}</td>            
+			<td>获取设备唯一标识成功，返回data对象</td>
+		</tr>
+        <tr>
+			<td>onfail</td>
+			<td>function(err){}</td>          
+			<td>获取设备唯一标识失败，返回错误码信息</td>  
+		</tr>
+    </tbody>
+</table>
+
+**返回的data对象：**
+<table style="border-style: solid; border-width: 0pt;" border="1" cellspacing="0" cellpadding="5px">
+    <tbody>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+			<td>error</td>
+			<td>number</td>        
+			<td>0 - 订阅成功；1 - 内部错误:功能的处理过程中出现错误, 具体错误信息查看error_msg字段 2 - 参数错误 3 – 超时 4 Referer非法 5 – sdcard无效</td>
+		</tr>
+        <tr>
+			<td>unique_id</td>
+			<td>string</td>
+			<td>返回的设备唯一标识</td>
+		</tr>
+    </tbody>
+</table>
+
+
+
+#### isBind ####
+    isBind(options)
+
+**功能描述：**
+
+根据api key获取某个轻应用是否绑定的状态。
+
+**参数说明：**
+options：为object类型，其中包括以下参数：
+<table style="border-style: solid; border-width: 0pt;" border="1" cellspacing="0" cellpadding="5px">
+    <tbody>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+			<td>onsuccess</td>
+			<td>function(data){}</td>            
+			<td>判断是否绑定成功，返回data对象</td>
+		</tr>
+        <tr>
+			<td>onfail</td>
+			<td>function(err){}</td>          
+			<td>判断是否绑定失败，返回错误码信息</td>  
+		</tr>
+    </tbody>
+</table>
+
+**返回的data对象：**
+<table style="border-style: solid; border-width: 0pt;" border="1" cellspacing="0" cellpadding="5px">
+    <tbody>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+			<td>error</td>
+			<td>number</td>        
+			<td>0 - 订阅成功；1 - 内部错误:功能的处理过程中出现错误, 具体错误信息查看error_msg字段 2 - 参数错误 3 – 超时 4 Referer非法 5 – sdcard无效</td>
+		</tr>
+        <tr>
+			<td>is_bind</td>
+			<td>boolean</td>
+			<td>返回true表示已经绑定，false表示未绑定</td>
 		</tr>
     </tbody>
 </table>
